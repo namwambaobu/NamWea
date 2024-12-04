@@ -98,29 +98,61 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Center(
+            child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Text("Weathero"),
+        )),
+        backgroundColor: Colors.grey[500],
+      ),
       body: ListView(children: [
         Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.location_city),
-              //city name
-              Text(_weather?.cityName ?? "Loading city..."),
+          child: Padding(
+            padding: const EdgeInsets.all(50.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Welcome...👋",
+                  style: TextStyle(
+                      color: Colors.brown[900],
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
+                ),
 
-              //animation
-              Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-              //temperature
-              Text('${_weather?.temperature.round()}°C'),
+                const SizedBox(
+                  height: 50,
+                ),
 
-              //Animation
-              Text(_weather?.mainCondition ?? "Loading..."),
+                Icon(Icons.location_city),
+                //city name
+                Text(_weather?.cityName ?? "Loading city..."),
 
-              //action Animations
-              Lottie.asset(getActionAnimation(_weather?.mainCondition)),
+                //animation
+                Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
+                //temperature
+                Text('${_weather?.temperature.round()}°C'),
 
-              //don't forget to...
-              Text('Dont Forget to 👆😃')
-            ],
+                //Animation
+                Text(_weather?.mainCondition ?? "Loading..."),
+
+                const SizedBox(height: 40),
+
+                Divider(),
+                const SizedBox(height: 30),
+                Divider(),
+                //action Animations
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child:
+                      Lottie.asset(getActionAnimation(_weather?.mainCondition)),
+                ),
+
+                //don't forget to...
+                Text('Dont Forget to 👆😃')
+              ],
+            ),
           ),
         ),
       ]),
